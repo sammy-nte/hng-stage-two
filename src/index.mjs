@@ -1,4 +1,4 @@
-import express, { response } from "express";
+import express from "express";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -88,7 +88,7 @@ app.get("/api/classify-number", async (req, res) => {
   const parsedNum = parseInt(query.number);
   checkProperties(parsedNum);
   const jsonObj = {
-    number: query.number,
+    number: parsedNum,
     is_prime: isPrime(parsedNum),
     is_perfect: isPerfectNumber(parsedNum),
     properties: properties,
@@ -99,5 +99,5 @@ app.get("/api/classify-number", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost/3300`);
+  console.log(`Server running on http://localhost/${PORT}`);
 });
